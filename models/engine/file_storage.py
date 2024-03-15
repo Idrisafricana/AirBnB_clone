@@ -20,7 +20,6 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-<<<<<<< HEAD
     def new(self, obj):
         """
         Sets an object in the __objects dictionary with a key of
@@ -53,23 +52,6 @@ class FileStorage:
 
         with open(FileStorage.__file_path, "w", encoding="utf-8") as file:
             json.dump(obj_dict, file)
-=======
-    def all(self):
-        """Return the dictionary __objects."""
-        return FileStorage.__objects
-
-    def new(self, obj):
-        """Set in __objects obj with key <obj_class_name>.id"""
-        ocname = obj.__class__.__name__
-        FileStorage.__objects["{}.{}".format(ocname, obj.id)] = obj
-
-    def save(self):
-        """Serialize __objects to the JSON file __file_path."""
-        odict = FileStorage.__objects
-        objdict = {obj: odict[obj].to_dict() for obj in odict.keys()}
-        with open(FileStorage.__file_path, "w") as f:
-            json.dump(objdict, f)
->>>>>>> ed0c005be6003faf2e6a9d83469981c30ad5bfef
 
     def reload(self):
         """Deserialize the JSON file __file_path to __objects, if it exists."""
